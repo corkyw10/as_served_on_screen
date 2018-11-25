@@ -11,7 +11,7 @@ class HomeController extends AbstractController {
    * @Route("/home")
    */
   public function index() {
-    return $this->render('base.html.twig');
+    return $this->render('cover.html.twig');
   }
 }
 ?>
