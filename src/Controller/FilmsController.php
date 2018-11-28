@@ -15,8 +15,9 @@ class FilmsController extends AbstractController {
    */
   public function showFilms() {
     $films = $this->getDoctrine()->getRepository(Films::class)->findAll();
+    
 
-    return $this->render('jumbo.html.twig', array('films' => $films));
+    return $this->render('filmlist.html.twig', array('films' => $films));
   }
 }
 ?>
