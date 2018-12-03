@@ -13,8 +13,10 @@
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="" alt="{{ season.seasontitle }} image">
-                            <div class="card-body">
-                                <h2 class="card-text">{{ season.seasontitle }}</h2>
+                            <div class="card-body">                          
+                                <a href="{{ path('episodes', {'tvShowId': season.tvShow.id, 'seasonId': season.id}) }}">
+                                   <h2 class="card-text">{{ season.seasontitle }}</h2> 
+                                </a>                                
                                 <div class="d-flex justify-content-between align-items-center">
                                     <button type="button" class="btn btn-outline-dark .btn-lg">Eat!</button>
                                 </div>
