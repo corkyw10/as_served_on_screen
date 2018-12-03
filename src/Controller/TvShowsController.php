@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\TvShows;
 use App\Entity\Seasons;
 use App\Entity\Episodes;
+use App\Entity\TvRestaurants;
 
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -38,6 +39,15 @@ class TvShowsController extends AbstractController {
     $episodes = $this->getDoctrine()->getRepository(Episodes::class)->findBy(['season' => $seasonId]);
 
     return $this->render('episodelist.html.twig', array('episodes' => $episodes));
+  }
+
+  /**
+   * @Route("tvshows/{tvShowId}/{seasonId}/{episodeId}", name="tvShowRestaurants", methods={"GET"})
+   */
+  public function showRestaurants($tvShowId, $seasonId, $episodeId) {
+    $restaurants = $this->getDoctrine()->getRepository(TvRestaurants::class)->findBy(['episode' => $episodeId]);
+
+    return $this->render('tvshowrestaurantlist.html.twig', array('restaurants' => $restaurants));
   }
 }
 ?>
