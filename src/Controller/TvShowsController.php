@@ -32,9 +32,9 @@ class TvShowsController extends AbstractController {
   }
 
   /**
-   * @Route("tvshows/{seasonId}/{episodeId}", name="episodes", methods={"GET"})
+   * @Route("tvshows/{tvShowId}/{seasonId}", name="episodes", methods={"GET"})
    */
-  public function showEpisodes($seasonId, $episodeId) {
+  public function showEpisodes($tvShowId, $seasonId) {
     $episodes = $this->getDoctrine()->getRepository(Episodes::class)->findBy(['season' => $seasonId]);
 
     return $this->render('episodelist.html.twig', array('episodes' => $episodes));
