@@ -22,13 +22,13 @@ class TvShowsController extends AbstractController {
   }
 
   /**
-   * @Route("tvshows/{id}", name="seasons", methods={"GET"})
+   * @Route("tvshows/{tvShowId}", name="seasons", methods={"GET"})
    */
-  public function showSeasons($id) {
-    $tvShow = $this->getDoctrine()->getRepository(TvShows::class)->find($id);
-    $seasons = $this->getDoctrine()->getRepository(Seasons::class)->findBy(['tv_show' => $id]);
+  public function showSeasons($tvShowId) {
+    $tvShow = $this->getDoctrine()->getRepository(TvShows::class)->find($tvShowId);
+    $seasons = $this->getDoctrine()->getRepository(Seasons::class)->findBy(['tv_show' => $tvShowId]);
 
-    return $this->render('seasonlist.html.twig', array('id' => $id, 'seasons' => $seasons, 'tvShow' => $tvShow));
+    return $this->render('seasonlist.html.twig', array('tvShowId' => $tvShowId, 'seasons' => $seasons, 'tvShow' => $tvShow));
   }
 
   /**
