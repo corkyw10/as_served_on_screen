@@ -16,12 +16,9 @@
                         <div class="card mb-4 shadow-sm">
                         <img class="card-img-top" src="{{ asset('assets/images/'~restaurant.imageUrl) }}" alt="{{ restaurant.name }} image">
                         <div class="card-body">
-                            <a href="{{ path('restaurantInfo', {'tvShowId': restaurant.episode.tvShow.id, 'seasonId': restaurant.episode.season.id, 'episodeId': restaurant.episode.id, 'restaurantId': restaurant.id}) }}">
+                            <a class="card-link" href="{{ path('restaurantInfo', {'tvShowId': restaurant.episode.tvShow.id, 'seasonId': restaurant.episode.season.id, 'episodeId': restaurant.episode.id, 'restaurantId': restaurant.id}) }}">
                                 <h2 class="card-text">{{ restaurant.name }}</h2>
                             </a>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <button type="button" class="btn btn-outline-dark .btn-lg">Eat!</button>
-                            </div>
                         </div>
                         </div>
                     </div>
