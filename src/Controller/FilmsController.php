@@ -28,5 +28,14 @@ class FilmsController extends AbstractController {
 
     return $this->render("filmrestaurantslist.html.twig", array('restaurants' => $restaurants));  
   }
+
+  /**
+   * @Route("films/{filmId}/{restaurantId}", name="filmRestaurantInfo", methods={"GET"})
+   */
+  public function showRestaurantInfo($filmId, $restaurantId) {
+    $restaurant = $this->getDoctrine()->getRepository(FilmRestaurants::class)->findBy(['id' => $restaurantId]);
+
+    return $this->render('restaurantinfo.html.twig', array('restaurant' => $restaurant));
+  }
 }
 ?>
