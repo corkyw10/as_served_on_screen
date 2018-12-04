@@ -5,30 +5,31 @@
 {% block content %}
 
         <div class="album py-5 bg-light">
-            <div class="container">
-    
-              <div class="row">
+            <div class="container">    
+                <div class="row">
 
                 {% if restaurants %}
                     {% for restaurant in restaurants %}
 
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="{{ asset('assets/images/'~restaurant.imageUrl) }}" alt="{{ restaurant.name }} image">
+                            <img class="card-img-top" src="{{ asset('assets/images/'~restaurant.imageUrl) }}" alt="{{ restaurant.name }} image">
                         <div class="card-body">
                             <a class="card-link" href="{{ path('filmRestaurantInfo', {'filmId': restaurant.film.id, 'restaurantId': restaurant.id}) }}">
-                                <h2 class="card-text">{{ restaurant.name }}</h2>
+                            <h2 class="card-text">{{ restaurant.name }}</h2>
                             </a>
                         </div>
                         </div>
                     </div>
 
-                {% endfor %}
-            {% endif %}
-
+                    {% endfor %}                
+                {% else %}
+                
+                    <h2>There haven't been any restaurants added yet, we're working on it though, check again soon!</h2>
+                    
+                {% endif %}
                 </div>
             </div>
-
         </div>
 
 {% endblock %}

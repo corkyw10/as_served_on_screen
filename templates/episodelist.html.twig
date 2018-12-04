@@ -5,8 +5,7 @@
 {% block content %}
 
         <div class="album py-5 bg-light">
-            <div class="container">
-    
+            <div class="container">    
                 <div class="row">
 
                     {% if episodes %}
@@ -14,7 +13,7 @@
 
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ asset('assets/images/'~episode.tvShow.imageUrl) }}" alt="{{ episode.title }} image">
+                                <img class="card-img-top" src="{{ asset('assets/images/'~episode.tvShow.imageUrl) }}" alt="{{ episode.title }} image">
                             <div class="card-body">
                                 <a class="card-link" href="{{ path('tvShowRestaurants', {'tvShowId': episode.tvShow.id, 'seasonId': episode.season.id, 'episodeId': episode.id}) }}">
                                     <h2 class="card-text">{{ episode.title }}</h2>
@@ -23,12 +22,15 @@
                             </div>
                         </div>
 
-                    {% endfor %}
-                {% endif %}
+                        {% endfor %}
+                    {% else %}
+                
+                        <h2>There haven't been any episodes added yet, we're working on it though, check again soon!</h2>
+                    
+                    {% endif %}
 
                 </div>
             </div>
-
         </div>
 
 {% endblock %}

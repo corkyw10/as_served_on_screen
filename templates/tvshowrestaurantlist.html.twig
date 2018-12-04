@@ -5,9 +5,8 @@
 {% block content %}
 
         <div class="album py-5 bg-light">
-            <div class="container">
-    
-              <div class="row">
+            <div class="container">    
+                <div class="row">
 
                 {% if restaurants %}
                     {% for restaurant in restaurants %}
@@ -23,12 +22,15 @@
                         </div>
                     </div>
 
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% else %}
+
+                <h2>There haven't been any restaurants added yet, we're working on it though, check again soon!</h2>
+
+                {% endif %}
 
                 </div>
             </div>
-
         </div>
 
 {% endblock %}

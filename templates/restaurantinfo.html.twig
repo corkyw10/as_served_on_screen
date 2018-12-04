@@ -7,33 +7,33 @@
 {% endblock %}
 
 {% block content %}
-{% if restaurant %}
-{% for place in restaurant %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <img src="{{ asset('assets/images/'~place.imageUrl) }}" class="img-fluid" alt="Responsive image">
-            </div>
+    {% if restaurant %}
+        {% for place in restaurant %}
         
-            <div class="col-md-6">
-                <h2 class="restaurant-title">{{ place.name }}</h2>
-                    <address>
-                        {{ place.streetAddress }}<br>
-                        {{ place.city }}<br>
-                        {{ place.postCode }}<br><br>
-                        <a class="btn btn-outline-dark" href="{{ place.url }}" role="button" target="_blank">Visit their website</a>
-                    </address>  
-            </div>        
-        </div>    
-    </div>      
-{% endfor %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/images/'~place.imageUrl) }}" class="img-fluid" alt="Responsive image">
+                    </div>
+        
+                    <div class="col-md-6">
+                        <h2 class="restaurant-title">{{ place.name }}</h2>
+                        <address>
+                            {{ place.streetAddress }}<br>
+                            {{ place.city }}<br>
+                            {{ place.postCode }}<br><br>
+                            <a class="btn btn-outline-dark" href="{{ place.url }}" role="button" target="_blank">Visit their website</a>
+                        </address>  
+                    </div>        
+                </div>    
+            </div>  
 
-{% endif %}
+        {% endfor %}
+    {% else %}
 
+            <h2>There havsn't been any information added for this restaurant yet, we're working on it though, check again soon!</h2>
 
-
-
-
+    {% endif %}
 {% endblock %}
 
 

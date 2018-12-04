@@ -5,8 +5,7 @@
 {% block content %}
 
         <div class="album py-5 bg-light">
-            <div class="container">
-    
+            <div class="container">    
               <div class="row">
 
                 {% if tvShows %}
@@ -25,12 +24,15 @@
                         </div>
                     </div>
 
-                {% endfor %}
+                    {% endfor %}
+             {% else %}
+
+                <h2>There haven't been any Tv Shows added yet, we're working on it though, check again soon!</h2>
+
             {% endif %}
 
                 </div>
             </div>
-
         </div>
 
 {% endblock %}
