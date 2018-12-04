@@ -35,6 +35,7 @@ body {
   color: #fff;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  font-family: 'Niramit', sans-serif;
 }
 
 .cover-container {
@@ -51,6 +52,8 @@ body {
 
 .masthead-brand {
   margin-bottom: 0;
+  font-family: 'Caveat', cursive;
+  font-size: 3em;
 }
 
 .nav-masthead .nav-link {
@@ -94,6 +97,16 @@ body {
 .cover .btn-lg {
   padding: .75rem 1.25rem;
   font-weight: 700;
+}
+
+.cover-heading {
+  font-family: 'Caveat', cursive;
+  font-weight: 900;
+  font-size: 4em;
+}
+
+.lead {
+  margin: 40px 0px 40px 0px;
 }
 
 .my-main {

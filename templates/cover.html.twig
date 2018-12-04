@@ -8,6 +8,7 @@
 
         <!-- Custom styles for this template -->
         <link href="{{ asset('assets/css/cover.css') }}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Niramit|Caveat" rel="stylesheet"> 
     
     {% endblock %}
 
@@ -21,20 +22,20 @@
             <h3 class="masthead-brand">As Served On Screen</h3>
             <nav class="nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="#">Log In</a>
-                <a class="nav-link" href="#">Roll Credits</a>
+                <!-- <a class="nav-link" href="#">Log In</a> -->
+                <!-- <a class="nav-link" href="#">Roll Credits</a> -->
             </nav>
             </div>
         </header>
 
         <main role="main" class="inner cover">
             <h1 class="cover-heading">As Served On Screen</h1>
-            <p class="lead">Have you ever been watching a show or film and thought, damn, I 
-            want what they're having! Look no further! We've got restaurant information to 
-            films and tv shows so you can dig in just like they do on screen!</p>
+            <p class="lead">If you're hungry for more after watching a particular
+                film or show, we've got you covered for the places where you can 
+                dine just like they did on screen!</p>
             <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">Tv Shows</a>
-            <a href="#" class="btn btn-lg btn-secondary">Films</a>
+            <a href="{{ path('tvShows') }}" class="btn btn-lg btn-secondary">Tv Shows</a>
+            <a href="{{ path('films') }}" class="btn btn-lg btn-secondary">Films</a>
             </p>
         </main>
 

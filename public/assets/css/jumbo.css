@@ -1,10 +1,32 @@
 /* Move down content because we have a fixed navbar that is 3.5rem tall */
 body {
     padding-top: 3.5rem;
+    font-family: 'Niramit', sans-serif;
   }
 
+/* Navbar */
+
+.navbar-brand {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+}
+
+.navbar {
+  background-color: #030208;
+}
+
+/* Jumbotron */
+
 .jumbotron {
-  background-image: url("../images/eat.jpg");
+  border-radius: 0 0 .3rem .3rem;
+  background-image: url("../images/table.jpg");
   background-position: center;
   background-size: cover;
+  font-family: 'Caveat', cursive;
+  color: white;
 }
+
+.display-3 {
+  font-size: 6.5rem;
+}
+

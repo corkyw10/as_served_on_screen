@@ -1,5 +1,11 @@
 {% extends 'jumbo.html.twig' %}
 
+{% block display %}
+    {% for place in restaurant %}
+        <h1 class="display-3">{{ place.name }}</h1>
+    {% endfor %}
+{% endblock %}
+
 {% block content %}
 {% if restaurant %}
 {% for place in restaurant %}

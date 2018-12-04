@@ -1,5 +1,7 @@
 {% extends 'jumbo.html.twig' %}
 
+{% block display %}<h1 class="display-3">Restaurants</h1>{% endblock %}
+
 {% block content %}
 
         <div class="album py-5 bg-light">
@@ -14,7 +16,9 @@
                         <div class="card mb-4 shadow-sm">
                         <img class="card-img-top" src="{{ asset('assets/images/'~restaurant.imageUrl) }}" alt="{{ restaurant.name }} image">
                         <div class="card-body">
+                            <a href="{{ path('filmRestaurantInfo', {'filmId': restaurant.film.id, 'restaurantId': restaurant.id}) }}">
                                 <h2 class="card-text">{{ restaurant.name }}</h2>
+                            </a>
                             <div class="d-flex justify-content-between align-items-center">
                                 <button type="button" class="btn btn-outline-dark .btn-lg">Eat!</button>
                             </div>
