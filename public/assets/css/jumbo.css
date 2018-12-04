@@ -4,6 +4,7 @@ body {
     font-family: 'Niramit', sans-serif;
   }
 
+
 /* Navbar */
 
 .navbar-brand {
@@ -31,6 +32,24 @@ body {
 }
 
 /* Content */
+
+.card-body {
+  height: 100px;  
+}
+
+.card-text {
+  font-size: 1.50rem;
+  text-decoration: none;
+  color: #030208;
+}
+
+.card-text:hover {
+  font-weight: 700;
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
 
 .card-img-top {
   height: 200px;
