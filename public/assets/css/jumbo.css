@@ -30,3 +30,9 @@ body {
   font-size: 6.5rem;
 }
 
+/* Content */
+
+.card-img-top {
+  height: 200px;
+}
+
