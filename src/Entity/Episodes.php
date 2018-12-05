@@ -43,6 +43,23 @@ class Episodes
      */
     private $runtime;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
