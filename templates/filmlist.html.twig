@@ -13,7 +13,7 @@
 
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ asset('assets/images/'~film.imageUrl) }}" alt="{{ film.title }} image">
+                            <div class="card-img" style="background-image: url('{{ asset("assets/images/"~film.imageUrl) }}');"></div>
                             <div class="card-body">
                                 <a class="card-link" href="{{ path('filmrestaurants', {'filmId': film.id}) }}">
                                     <h2 class="card-text">{{ film.title }}</h2>

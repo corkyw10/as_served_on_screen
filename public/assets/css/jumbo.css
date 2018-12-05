@@ -48,12 +48,18 @@ body {
 }
 
 .card-img {
-  height: 320px;
+  height: 225px;
   background-size: 100% 100%; 
 }
 
 .card-body {
   min-height: 120px;
+}
+
+@media (max-width: 990px) {
+  .card-img {
+    height: 150px;
+  }
 }
 
 @media (max-width: 765px) {

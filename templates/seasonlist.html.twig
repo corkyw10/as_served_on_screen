@@ -13,7 +13,7 @@
 
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ asset('assets/images/'~season.tvShow.imageUrl) }}" alt="{{ season.seasontitle }} image">
+                            <div class="card-img" style="background-image: url('{{ asset("assets/images/"~season.tvShow.imageUrl) }}');"></div>
                             <div class="card-body">                          
                                 <a class="card-link" href="{{ path('episodes', {'tvShowId': season.tvShow.id, 'seasonId': season.id}) }}">
                                    <h2 class="card-text">{{ season.seasontitle }}</h2>
