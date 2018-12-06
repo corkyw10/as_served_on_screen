@@ -8,6 +8,8 @@ use App\Entity\Episodes;
 use App\Entity\TvRestaurants;
 
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -57,6 +59,28 @@ class TvShowsController extends AbstractController {
     $restaurant = $this->getDoctrine()->getRepository(TvRestaurants::class)->findBy(['id' => $restaurantId]);
 
     return $this->render('restaurantinfo.html.twig', array('restaurant' => $restaurant));
+  }
+
+    /**
+   * @Route("/jsonresponse", name="jsonresponse", methods={"GET"})
+   */
+  public function getJson(Request $request) {
+    $content = $request->query->get('seasonId');
+    $season = $this->getDoctrine()->getRepository(Seasons::class)->findBy(['id' => $content]);
+    $episodes = $this->getDoctrine()->getRepository(Episodes::class)->findBy(['season' => $content]);
+    $jsonResponse = new JsonResponse();
+    if ($request->isXmlHttpRequest()) {
+      $jsonData = array();
+      $idx = 0;
+      foreach ($episodes as $episode) {
+        $temp = array(
+          'title' => $episode->getTitle()
+        );
+        $jsonData[$idx++] = $temp;
+      }
+      $jsonResponse->setData(array('result' => $jsonData));
+    }
+    return $jsonResponse;
   }
 }
 ?>

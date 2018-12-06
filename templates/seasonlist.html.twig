@@ -1,37 +1,54 @@
 {% extends 'jumbo.html.twig' %}
 
-{% block display %}<h1 class="display-3">Seasons</h1>{% endblock %}
+ {% block display %}<h1 class="display-3">{{ tvShow.title }}</h1>{% endblock %} 
 
 {% block content %}
 
-        <div class="album py-5 bg-light">
-            <div class="container">    
-                <div class="row">
-
-                    {% if seasons %}
-                        {% for season in seasons %}
-
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                            <div class="card-img" style="background-image: url('{{ asset("assets/images/"~season.tvShow.imageUrl) }}');"></div>
-                            <div class="card-body">                          
-                                <a class="card-link" href="{{ path('episodes', {'tvShowId': season.tvShow.id, 'seasonId': season.id}) }}">
-                                   <h2 class="card-text">{{ season.seasontitle }}</h2>
-                                </a>                                
-                            </div>
-                            </div>
-                        </div>
-
-                        {% endfor %}
-                    {% else %}
-
-                        <h2>There haven't been any seasons added yet, we're working on it though, check again soon!</h2>
-
-                    {% endif %}
-
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ asset('assets/images/'~tvShow.imageUrl) }}" class="img-fluid" alt="Responsive image">
             </div>
 
-        </div>
+            <div class="col-md-6">
+                <p>{{ tvShow.description }}</p>
+                <p id="test"></p>
+                <div class="row">
+                    <select class="custom-select">
+                        <option selected>Choose Season</option>
+                        {% for season in seasons %}
+                            <option class="season-selector" value="{{ season.id }}">{{ season.seasonTitle }}</option>
+                            {# ajax request to fetch episodes and populate episode list #}
+                        {% endfor %}
+                    </select>
+                    <select class="custom-select select-episodes">
+                        <option selected>Choose Episode</option>
+                            {# To be populated with Ajax #}
+                    </select>
+                </div>
+            </div>        
+        </div>    
+    </div> 
 
+                        {# <h2>There haven't been any seasons added yet, we're working on it though, check again soon!</h2> #}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.season-selector').click(function() {
+            var seasonId = $(this).attr('value');
+            $.ajax({
+                url: 'http://asservedonscreen.test/jsonresponse',
+                method: "GET",
+                data: {'seasonId': seasonId},
+            })
+            .done(function(data) {
+                for (var i=0; i<data['result'].length; i++) {
+                    var title = data['result'][i]['title'];
+                    $(".select-episodes").append("<option class=\"epsiode-selector\" value=\"\">" + title + "</option>"); 
+                }
+            })
+        });
+    </script>
 {% endblock %}
