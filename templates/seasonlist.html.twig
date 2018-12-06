@@ -46,7 +46,8 @@
             .done(function(data) {
                 for (var i=0; i<data['result'].length; i++) {
                     var title = data['result'][i]['title'];
-                    $(".select-episodes").append("<option class=\"epsiode-selector\" value=\"\">" + title + "</option>"); 
+                    var episodeId = data['result'][i]['episodeId'];
+                    $(".select-episodes").append("<option class=\"epsiode-selector\" value=\""+ episodeId + "\">" + title + "</option>"); 
                 }
             })
         });
