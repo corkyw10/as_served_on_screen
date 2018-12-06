@@ -74,7 +74,8 @@ class TvShowsController extends AbstractController {
       $idx = 0;
       foreach ($episodes as $episode) {
         $temp = array(
-          'title' => $episode->getTitle()
+          'title' => $episode->getTitle(),
+          'episodeId' => $episode->getId()
         );
         $jsonData[$idx++] = $temp;
       }
