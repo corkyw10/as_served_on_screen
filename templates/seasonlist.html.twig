@@ -38,6 +38,9 @@
     <script>
         $('.season-selector').click(function() {
             var seasonId = $(this).attr('value');
+            if ($(".episode-selector")) {
+                $(".episode-selector").remove();
+            }
             $.ajax({
                 url: 'http://asservedonscreen.test/jsonresponse',
                 method: "GET",
@@ -47,7 +50,7 @@
                 for (var i=0; i<data['result'].length; i++) {
                     var title = data['result'][i]['title'];
                     var episodeId = data['result'][i]['episodeId'];
-                    $(".select-episodes").append("<option class=\"epsiode-selector\" value=\""+ episodeId + "\">" + title + "</option>"); 
+                    $(".select-episodes").append("<option class=\"episode-selector\" value=\""+ episodeId + "\">" + title + "</option>"); 
                 }
             })
         });
