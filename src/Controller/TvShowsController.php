@@ -61,11 +61,11 @@ class TvShowsController extends AbstractController {
     return $this->render('restaurantinfo.html.twig', array('restaurant' => $restaurant));
   }
 
-    /**
+  /**
    * @Route("/getepisodejson", name="getEpisodeJson", methods={"GET"})
    */
   // New request object created
-  public function getJson(Request $request) {
+  public function getEpisodeJson(Request $request) {
     // get season Id from request to enable query to get seasons, then to episodes
     $content = $request->query->get('seasonId');
     $season = $this->getDoctrine()->getRepository(Seasons::class)->findBy(['id' => $content]);
@@ -89,5 +89,30 @@ class TvShowsController extends AbstractController {
     }
     return $jsonResponse;
   }
+
+  /**
+   * @Route("/getrestaurantjson", name="getRestaurantJson", methods={"GET"})
+   */
+  public function getRestaurantJson(Request $request) {
+    $content = $request->query->get('episodeId');
+    $restaurants = $this->getDoctrine()->getRepository(TvRestaurants::class)->findBy(['episode' => $content]);
+
+    $jsonResponse = new JsonResponse();
+    if ($request->isXmlHttpRequest()) {
+      $jsonData = array();
+      $idx = 0;
+      foreach ($restaurants as $restaurant) {
+        $temp = array (
+          'id' => $restaurant->getId(),
+          'name' => $restaurant->getName(),
+          'episodeId' => $restaurant->getEpisode()->getId(),
+          'imageUrl' => $restaurant->getImageUrl()          
+        );
+      $jsonData[$idx++] = $temp;        
+      }
+      $jsonResponse->setData(array('result' => $jsonData));
+    }
+    return $jsonResponse;
+    }
 }
 ?>
