@@ -4,31 +4,42 @@
 
 {% block content %}
 
-    <div class="container">
+    <div class="container shadow">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ asset('assets/images/'~tvShow.imageUrl) }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('assets/images/'~tvShow.imageUrl) }}" class="img-fluid shadow" alt="Responsive image">
             </div>
-
-            <div class="col-md-6">
+            <div class="tvShow-content col-md-6">
                 <p>{{ tvShow.description }}</p>
-                <p id="test"></p>
-                <div class="row">
-                    <select class="custom-select">
-                        <option selected>Choose Season</option>
-                        {% for season in seasons %}
-                            <option class="season-selector" value="{{ season.id }}">{{ season.seasonTitle }}</option>
-                            {# ajax request to fetch episodes and populate episode list #}
-                        {% endfor %}
-                    </select>
-                    <select class="custom-select select-episodes">
-                        <option selected>Choose Episode</option>
-                            {# To be populated with Ajax #}
-                    </select>
-                </div>
             </div>        
         </div>    
     </div> 
+
+    <div class="container restaurants shadow">
+        <div class="row">
+            <div class="col-md-4">
+            <select class="custom-select">
+                <option selected>Choose Season</option>
+                {% for season in seasons %}
+                    <option class="season-selector" value="{{ season.id }}">{{ season.seasonTitle }}</option>
+                    {# ajax request to fetch episodes and populate episode list #}
+                {% endfor %}
+            </select>
+            </div>
+            <div class="col-md-4">
+            <select class="custom-select select-episodes">
+                <option selected>Choose Episode</option>
+                    {# To be populated with Ajax #}
+            </select>
+            </div>
+            <button type="button" class="btn btn-outline-dark get-restaurants" id="">See Restaurants</button>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p id="test">Restaurant information here</p>
+            </div>
+        </div>
+    </div>
 
                         {# <h2>There haven't been any seasons added yet, we're working on it though, check again soon!</h2> #}
 
@@ -37,6 +48,9 @@
 {% block javascripts %}
     <script>
         $('.season-selector').click(function() {
+            /* Populates episode dropdown selector appropriate to selected season.
+            Dropdown is cleared and repopulated every time a season is selected in the season
+            dropdown menu  */
             var seasonId = $(this).attr('value');
             if ($(".episode-selector")) {
                 $(".episode-selector").remove();
@@ -54,5 +68,6 @@
                 }
             })
         });
+
     </script>
 {% endblock %}
