@@ -72,21 +72,25 @@
         $(document).on('click', '.episode-selector', function() {
             /* Changes id of See Restaurants button to appropriate Episode Id
             to send to server for restaurant list population */
-            console.log('it clicked');
             var episodeId = $(this).attr('value');
-            console.log("value is " + episodeId);
             $('.get-restaurants').attr('id', episodeId);
         });
 
         $('.get-restaurants').click(function() {
             var episodeId = $(this).attr('id');
             $.ajax({
-                url: 'http://asservedonscreen.test/jsonresponse',
+                url: 'http://asservedonscreen.test/getrestaurantjson',
                 method: "GET",
                 data: {'episodeId': episodeId}
                 })
             .done(function(data) {
-                console.log('It clicked');
+                for (var i = 0; i < data['result'].length; i++) {
+                    var restaurantName = [data['result'][i]['name']]);
+                    var restaurantId = [data['result'][i]['id']]);
+                    var restaurantImageUrl = [data['result'][i]['imageUrl']]);
+                    var episodeId = [data['result'][i]['episodeId']]);
+                    
+                }
             })
         })
 
