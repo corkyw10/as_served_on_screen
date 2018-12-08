@@ -68,6 +68,15 @@
                 }
             })
         });
+        
+        $(document).on('click', '.episode-selector', function() {
+            /* Changes id of See Restaurants button to appropriate Episode Id
+            to send to server for restaurant list population */
+            console.log('it clicked');
+            var episodeId = $(this).attr('value');
+            console.log("value is " + episodeId);
+            $('.get-restaurants').attr('id', episodeId);
+        });
 
     </script>
 {% endblock %}
