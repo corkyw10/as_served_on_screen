@@ -62,7 +62,7 @@ class TvShowsController extends AbstractController {
   }
 
     /**
-   * @Route("/jsonresponse", name="jsonresponse", methods={"GET"})
+   * @Route("/getepisodejson", name="getEpisodeJson", methods={"GET"})
    */
   // New request object created
   public function getJson(Request $request) {

@@ -56,7 +56,7 @@
                 $(".episode-selector").remove();
             }
             $.ajax({
-                url: 'http://asservedonscreen.test/jsonresponse',
+                url: 'http://asservedonscreen.test/getepisodejson',
                 method: "GET",
                 data: {'seasonId': seasonId},
             })
@@ -77,6 +77,18 @@
             console.log("value is " + episodeId);
             $('.get-restaurants').attr('id', episodeId);
         });
+
+        $('.get-restaurants').click(function() {
+            var episodeId = $(this).attr('id');
+            $.ajax({
+                url: 'http://asservedonscreen.test/jsonresponse',
+                method: "GET",
+                data: {'episodeId': episodeId}
+                })
+            .done(function(data) {
+                console.log('It clicked');
+            })
+        })
 
     </script>
 {% endblock %}
