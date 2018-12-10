@@ -5,17 +5,17 @@
 {% block content %}
 
     <div class="container shadow">
-        <div class="row">
+      	<div class="row">
             <div class="col-md-4">
                 <img src="{{ asset('assets/images/'~tvShow.imageUrl) }}" class="img-fluid shadow" alt="Responsive image">
-            </div>
+          	</div>
             <div class="tvShow-content col-md-6">
                 <p>{{ tvShow.description }}</p>
             </div>        
         </div>    
     </div> 
 
-    <div class="container restaurants shadow">
+    <div class="container shadow">
         <div class="row">
             <div class="col-md-4">
             <select class="custom-select">
@@ -34,9 +34,11 @@
             </div>
             <button type="button" class="btn btn-outline-dark get-restaurants" id="">See Restaurants</button>
         </div>
-        <div class="row">
-            <div class="col-md-8">
-                <p id="test">Restaurant information here</p>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row restaurants">
+                
+                </div>
             </div>
         </div>
     </div>
@@ -72,7 +74,7 @@
         $(document).on('click', '.episode-selector', function() {
             /* Changes id of See Restaurants button to appropriate Episode Id
             to send to server for restaurant list population */
-            var episodeId = $(this).attr('value');
+          	    var episodeId = $(this).attr('value');
             $('.get-restaurants').attr('id', episodeId);
         });
 
@@ -85,11 +87,20 @@
                 })
             .done(function(data) {
                 for (var i = 0; i < data['result'].length; i++) {
-                    var restaurantName = [data['result'][i]['name']]);
-                    var restaurantId = [data['result'][i]['id']]);
-                    var restaurantImageUrl = [data['result'][i]['imageUrl']]);
-                    var episodeId = [data['result'][i]['episodeId']]);
-                    
+                    var restaurantName = data['result'][i]['name'];
+                    var restaurantId = data['result'][i]['id'];
+                    var restaurantImageUrl = data['result'][i]['imageUrl'];
+                    var episodeId = data['result'][i]['episodeId'];
+                    $('.restaurants').append('<div class="col-md-4">' +
+                                            '<div class="card mb-4 shadow-sm">' +
+                                            '<div class="card-img" ' +
+                                            'style="background-image: ' +
+                                            'url(\'../assets/images/' + restaurantImageUrl + '\');">' +
+                                            '</div>' +
+                                            '<div class="card-body">'+
+                                            '<a class="card-link" href="#">' + 
+                                            '<h2 class="card-text">' + restaurantName + '</h2>' +
+                                            '</a></div></div></div>');
                 }
             })
         })
