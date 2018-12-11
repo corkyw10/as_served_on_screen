@@ -48,7 +48,10 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script>
+
         $('.season-selector').click(function() {
             /* Populates episode dropdown selector appropriate to selected season.
             Dropdown is cleared and repopulated every time a season is selected in the season
@@ -71,7 +74,7 @@
             })
         });
         
-        $(document).on('click', '.episode-selector', function() {
+        $('.select-episodes').on('click', '.episode-selector', function() {
             /* Changes id of See Restaurants button to appropriate Episode Id
             to send to server for restaurant list population */
           	    var episodeId = $(this).attr('value');
@@ -91,6 +94,8 @@
                     var restaurantId = data['result'][i]['id'];
                     var restaurantImageUrl = data['result'][i]['imageUrl'];
                     var episodeId = data['result'][i]['episodeId'];
+                    var tvShowId = data['result'][i]['tvShowId'];
+                    var url = Routing.generate('restaurantInfo', {'tvShowId': tvShowId, 'restaurantId': restaurantId}); 
                     $('.restaurants').append('<div class="col-md-4">' +
                                             '<div class="card mb-4 shadow-sm">' +
                                             '<div class="card-img" ' +
@@ -98,7 +103,7 @@
                                             'url(\'../assets/images/' + restaurantImageUrl + '\');">' +
                                             '</div>' +
                                             '<div class="card-body">'+
-                                            '<a class="card-link" href="#">' + 
+                                            '<a class="card-link" href="' + url + '"' + 
                                             '<h2 class="card-text">' + restaurantName + '</h2>' +
                                             '</a></div></div></div>');
                 }
