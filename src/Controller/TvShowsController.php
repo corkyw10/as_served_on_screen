@@ -35,27 +35,9 @@ class TvShowsController extends AbstractController {
   }
 
   /**
-   * @Route("tvshows/{tvShowId}/{seasonId}", name="episodes", methods={"GET"})
+   * @Route("tvshows/{tvShowId}/{restaurantId}", name="restaurantInfo", options={"expose"=true}, methods={"GET"})
    */
-  public function showEpisodes($tvShowId, $seasonId) {
-    $episodes = $this->getDoctrine()->getRepository(Episodes::class)->findBy(['season' => $seasonId]);
-
-    return $this->render('episodelist.html.twig', array('episodes' => $episodes));
-  }
-
-  /**
-   * @Route("tvshows/{tvShowId}/{seasonId}/{episodeId}", name="tvShowRestaurants", methods={"GET"})
-   */
-  public function showRestaurants($tvShowId, $seasonId, $episodeId) {
-    $restaurants = $this->getDoctrine()->getRepository(TvRestaurants::class)->findBy(['episode' => $episodeId]);
-
-    return $this->render('tvshowrestaurantlist.html.twig', array('restaurants' => $restaurants));
-  }
-
-  /**
-   * @Route("tvshows/{tvShowId}/{seasonId}/{episodeId}/{restaurantId}", name="restaurantInfo", methods={"GET"})
-   */
-  public function showRestaurantInfo($tvShowId, $seasonId, $episodeId, $restaurantId) {
+  public function showRestaurantInfo($tvShowId, $restaurantId) {
     $restaurant = $this->getDoctrine()->getRepository(TvRestaurants::class)->findBy(['id' => $restaurantId]);
 
     return $this->render('restaurantinfo.html.twig', array('restaurant' => $restaurant));
@@ -106,7 +88,8 @@ class TvShowsController extends AbstractController {
           'id' => $restaurant->getId(),
           'name' => $restaurant->getName(),
           'episodeId' => $restaurant->getEpisode()->getId(),
-          'imageUrl' => $restaurant->getImageUrl()          
+          'imageUrl' => $restaurant->getImageUrl(),
+          'tvShowId' => $restaurant->getEpisode()->getTvShow()->getId()
         );
       $jsonData[$idx++] = $temp;        
       }
