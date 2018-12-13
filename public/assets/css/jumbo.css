@@ -45,6 +45,7 @@ body {
 
 .card-link:hover {
   text-decoration: none;
+  color: #030208;
 }
 
 .card-img {
@@ -75,9 +76,23 @@ body {
   }
 }
 
-@media (max-width: 765px) {
+@media (max-width: 770px) {
   .card-img {
     height: 380px;
+  }
+
+  .col-md-4 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .tv-img {
+    width: 80%;
+    margin: auto;
+  }
+
+  .get-restaurants {
+    
   }
 }
 
