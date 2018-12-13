@@ -46,20 +46,15 @@ class TvShowsController extends AbstractController {
   /**
    * @Route("/getepisodejson", name="getEpisodeJson", methods={"GET"})
    */
-  // New request object created
   public function getEpisodeJson(Request $request) {
-    // get season Id from request to enable query to get seasons, then to episodes
     $content = $request->query->get('seasonId');
     $season = $this->getDoctrine()->getRepository(Seasons::class)->findBy(['id' => $content]);
     $episodes = $this->getDoctrine()->getRepository(Episodes::class)->findBy(['season' => $content]);
-    // New Json response object created
     $jsonResponse = new JsonResponse();
     if ($request->isXmlHttpRequest()) {
-      // Check to see if request is an Ajax request
       $jsonData = array();
       $idx = 0;
       foreach ($episodes as $episode) {
-        // Add data to array that is then passed into JsonResponse object
         $temp = array(
           'title' => $episode->getTitle(),
           'episodeId' => $episode->getId()
@@ -67,7 +62,6 @@ class TvShowsController extends AbstractController {
         $jsonData[$idx++] = $temp;
       }
       $jsonResponse->setData(array('result' => $jsonData));
-      // Data passed to JsonResponse inside assoc array as per XSSI protection rules
     }
     return $jsonResponse;
   }
