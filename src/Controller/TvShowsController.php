@@ -49,7 +49,7 @@ class TvShowsController extends AbstractController {
   public function getEpisodeJson(Request $request) {
     $content = $request->query->get('seasonId');
     $season = $this->getDoctrine()->getRepository(Seasons::class)->findBy(['id' => $content]);
-    $episodes = $this->getDoctrine()->getRepository(Episodes::class)->findBy(['season' => $content]);
+    $episodes = $this->getDoctrine()->getRepository(Episodes::class)->getEpisodesInOrder($content);
     $jsonResponse = new JsonResponse();
     if ($request->isXmlHttpRequest()) {
       $jsonData = array();
