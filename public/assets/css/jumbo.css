@@ -53,6 +53,10 @@ body {
   background-size: 100% 100%; 
 }
 
+.img-fluid {
+  border-radius: 5px;
+}
+
 .card-body {
   min-height: 120px;
 }
