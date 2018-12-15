@@ -3,20 +3,18 @@
 {% block display %}<h1 class="display-3">Restaurants</h1>{% endblock %}
 
 {% block content %}
-    {% for i in film %}
 
     <div class="container shadow">
       	<div class="row">
             <div class="col-md-4">
-                <img src="{{ asset('assets/images/'~i.imageUrl) }}" class="img-fluid shadow tv-img" alt="Responsive image">
+                <img src="{{ asset('assets/images/'~film.imageUrl) }}" class="img-fluid shadow tv-img" alt="Responsive image">
           	</div>
             <div class="content col-md-8">
-                <p>{{ i.description }}</p>
+                <p>{{ film.description }}</p>
             </div>        
         </div>    
     </div>
 
-    {% endfor %}
 
         <div class="album py-5 bg-light">
             <div class="container">    

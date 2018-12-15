@@ -25,7 +25,7 @@ class FilmsController extends AbstractController {
    */
   public function showFilmRestaurants($filmId) {
     $restaurants = $this->getDoctrine()->getRepository(FilmRestaurants::class)->findBy(['film' => $filmId]);
-    $film = $this->getDoctrine()->getRepository(Films::class)->findBy(['id' => $filmId]);
+    $film = $this->getDoctrine()->getRepository(Films::class)->findOneBy(['id' => $filmId]);
 
     return $this->render("filmrestaurantslist.html.twig", array('restaurants' => $restaurants, 'film' => $film));  
   }
