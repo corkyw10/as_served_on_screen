@@ -38,7 +38,7 @@ class TvShowsController extends AbstractController {
    * @Route("tvshows/{tvShowId}/{restaurantId}", name="restaurantInfo", options={"expose"=true}, methods={"GET"})
    */
   public function showRestaurantInfo($tvShowId, $restaurantId) {
-    $restaurant = $this->getDoctrine()->getRepository(TvRestaurants::class)->findBy(['id' => $restaurantId]);
+    $restaurant = $this->getDoctrine()->getRepository(TvRestaurants::class)->findOneBy(['id' => $restaurantId]);
 
     return $this->render('restaurantinfo.html.twig', array('restaurant' => $restaurant));
   }
