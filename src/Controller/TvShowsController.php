@@ -19,7 +19,7 @@ class TvShowsController extends AbstractController {
    * @Route("/tvshows", name="tvShows", methods={"GET"})
    */
   public function showTvShows() {
-    $tvShows = $this->getDoctrine()->getRepository(TvShows::class)->findAll();    
+    $tvShows = $this->getDoctrine()->getRepository(TvShows::class)->allTvShowsAlphabetical();    
 
     return $this->render('tvshowlist.html.twig', array('tvShows' => $tvShows));
   }

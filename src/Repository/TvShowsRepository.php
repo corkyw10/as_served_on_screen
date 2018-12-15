@@ -19,6 +19,16 @@ class TvShowsRepository extends ServiceEntityRepository
         parent::__construct($registry, TvShows::class);
     }
 
+    /**
+     * @return TvShows[]
+     */
+    public function allTvShowsAlphabetical() {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return TvShows[] Returns an array of TvShows objects
     //  */
