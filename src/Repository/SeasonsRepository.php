@@ -19,6 +19,19 @@ class SeasonsRepository extends ServiceEntityRepository
         parent::__construct($registry, Seasons::class);
     }
 
+    /**
+     * @param $tvShowId
+     * @return Seasons[]
+     */
+    public function getSeasonsInOrder($tvShowId) {
+        return $this->createQueryBuilder('q')
+            ->where('q.tv_show = :tv_show')
+            ->setParameter('tv_show', $tvShowId)
+            ->orderBy('q.season_num', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Seasons[] Returns an array of Seasons objects
     //  */

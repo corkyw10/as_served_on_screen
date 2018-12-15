@@ -29,7 +29,7 @@ class TvShowsController extends AbstractController {
    */
   public function showSeasons($tvShowId) {
     $tvShow = $this->getDoctrine()->getRepository(TvShows::class)->find($tvShowId);
-    $seasons = $this->getDoctrine()->getRepository(Seasons::class)->findBy(['tv_show' => $tvShowId]);
+    $seasons = $this->getDoctrine()->getRepository(Seasons::class)->getSeasonsInOrder($tvShowId);
 
     return $this->render('seasonlist.html.twig', array('tvShowId' => $tvShowId, 'seasons' => $seasons, 'tvShow' => $tvShow));
   }
