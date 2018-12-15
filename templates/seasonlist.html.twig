@@ -79,12 +79,15 @@
         $('.select-episodes').on('click', '.episode-selector', function() {
             /* Changes id of See Restaurants button to appropriate Episode Id
             to send to server for restaurant list population */
-          	    var episodeId = $(this).attr('value');
+          	var episodeId = $(this).attr('value');
             $('.get-restaurants').attr('id', episodeId);
         });
 
         $('.get-restaurants').click(function() {
             var episodeId = $(this).attr('id');
+            if ($('.restaurant-card')) {
+                $('.restaurant-card').remove();
+            }
             $.ajax({
                 url: 'http://asservedonscreen.test/getrestaurantjson',
                 method: "GET",
@@ -98,7 +101,7 @@
                     var episodeId = data['result'][i]['episodeId'];
                     var tvShowId = data['result'][i]['tvShowId'];
                     var url = Routing.generate('restaurantInfo', {'tvShowId': tvShowId, 'restaurantId': restaurantId}); 
-                    $('.restaurants').append('<div class="col-md-4">' +
+                    $('.restaurants').append('<div class="col-md-4 restaurant-card">' +
                                             '<div class="card mb-4 shadow-sm">' +
                                             '<div class="card-img" ' +
                                             'style="background-image: ' +
