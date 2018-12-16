@@ -19,6 +19,19 @@ class FilmRestaurantsRepository extends ServiceEntityRepository
         parent::__construct($registry, FilmRestaurants::class);
     }
 
+    /**
+     * @param $filmId
+     * @return FilmRestaurants []
+     */
+    public function getRestaurantsAlphabetically($filmId) {
+        return $this->createQueryBuilder('q')
+            ->where('q.film = :film')
+            ->setParameter('film', $filmId)
+            ->orderBy('q.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return FilmRestaurants[] Returns an array of FilmRestaurants objects
     //  */
