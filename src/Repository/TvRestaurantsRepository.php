@@ -19,6 +19,19 @@ class TvRestaurantsRepository extends ServiceEntityRepository
         parent::__construct($registry, TvRestaurants::class);
     }
 
+    /**
+     * @param $episodeId
+     * @return TvRestaurants []
+     */
+    public function getRestaurantsAlphabetically($episodeId) {
+        return $this->createQueryBuilder('q')
+            ->where('q.episode = :episode')
+            ->setParameter('episode', $episodeId)
+            ->orderBy('q.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return TvRestaurants[] Returns an array of TvRestaurants objects
     //  */

@@ -71,7 +71,7 @@ class TvShowsController extends AbstractController {
    */
   public function getRestaurantJson(Request $request) {
     $content = $request->query->get('episodeId');
-    $restaurants = $this->getDoctrine()->getRepository(TvRestaurants::class)->findBy(['episode' => $content]);
+    $restaurants = $this->getDoctrine()->getRepository(TvRestaurants::class)->getRestaurantsAlphabetically($content);
 
     $jsonResponse = new JsonResponse();
     if ($request->isXmlHttpRequest()) {
