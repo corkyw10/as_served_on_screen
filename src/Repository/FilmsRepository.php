@@ -19,6 +19,16 @@ class FilmsRepository extends ServiceEntityRepository
         parent::__construct($registry, Films::class);
     }
 
+    /**
+     * return Films[]
+     */
+    public function getFilmsAlphabetically() {
+        return $this->createQueryBuilder('q')
+            ->orderBy('q.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Films[] Returns an array of Films objects
     //  */
