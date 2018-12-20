@@ -74,6 +74,17 @@ body {
   margin: auto;
 }
 
+.restaurant-title {
+  display: inline-block;
+  border-bottom: #030208 3px dashed;
+  margin-bottom: 30px;
+}
+
+.info-image {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
 @media (max-width: 990px) {
   .card-img {
     height: 150px;
@@ -111,3 +122,18 @@ body {
   }
 }
 
+/* Map */
+
+#mapid {
+   height: 200px;
+   width: 100%;
+   border-radius: 5px 5px 0 0;
+  }
+
+.location-info {
+  border-radius: 5px;
+}
+
+address {
+  padding: 10px;
+}
