@@ -4,44 +4,43 @@
 
 {% block content %}
 
-    <div class="container shadow">
-      	<div class="row">
-            <div class="col-md-4">
-                <img src="{{ asset('assets/images/'~film.imageUrl) }}" class="img-fluid shadow tv-img" alt="Responsive image">
-          	</div>
-            <div class="content col-md-8">
-                <p>{{ film.description }}</p>
-            </div>        
-        </div>    
-    </div>
+	<div class="container shadow">
+		<div class="row">
+			<div class="col-md-4">
+				<img src="{{ asset('assets/images/'~film.imageUrl) }}" class="img-fluid shadow tv-img" alt="Responsive image">
+			</div>
+			<div class="content col-md-8">
+				<p>{{ film.description }}</p>
+				<a class="btn btn-outline-dark" href="{{ film.url }}" role="button" target="_blank">Visit the website</a>
+			</div>        
+		</div>
+	</div>
 
 
-        <div class="album py-5 bg-light">
-            <div class="container">    
-                <div class="row">
+	<div class="container shadow">    
+		<div class="row">
 
-                {% if restaurants %}
-                    {% for restaurant in restaurants %}
+		{% if restaurants %}
+			{% for restaurant in restaurants %}
 
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                        <div class="card-img" style="background-image: url('{{ asset("assets/images/"~restaurant.imageUrl) }}');"></div>
-                        <div class="card-body">
-                            <a class="card-link" href="{{ path('filmRestaurantInfo', {'filmId': restaurant.film.id, 'restaurantId': restaurant.id}) }}">
-                            <h2 class="card-text">{{ restaurant.name }}</h2>
-                            </a>
-                        </div>
-                        </div>
-                    </div>
+			<div class="col-md-4">
+				<div class="card mb-4 shadow-sm">
+				<div class="card-img" style="background-image: url('{{ asset("assets/images/"~restaurant.imageUrl) }}');"></div>
+				<div class="card-body">
+					<a class="card-link" href="{{ path('filmRestaurantInfo', {'filmId': restaurant.film.id, 'restaurantId': restaurant.id}) }}">
+					<h2 class="card-text">{{ restaurant.name }}</h2>
+					</a>
+				</div>
+				</div>
+			</div>
 
-                    {% endfor %}                
-                {% else %}
-                
-                    <h2>There haven't been any restaurants added yet, we're working on it though, check again soon!</h2>
-                    
-                {% endif %}
-                </div>
-            </div>
-        </div>
+			{% endfor %}                
+		{% else %}
+		
+			<h2>There haven't been any restaurants added yet, we're working on it though, check again soon!</h2>
+				
+		{% endif %}
+		</div>
+	</div>
 
 {% endblock %}
