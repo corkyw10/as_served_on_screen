@@ -68,6 +68,8 @@ body {
 
 .container {
   padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 5px;
 }
 
 .custom-select {
