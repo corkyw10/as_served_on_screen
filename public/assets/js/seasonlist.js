@@ -3,7 +3,6 @@ $(".season-select").change(function() {
 	/* Populates episode dropdown selector appropriate to selected season.
 	Dropdown is cleared and repopulated every time a season is selected in the season
 	dropdown menu  */
-	console.log('hi');
 	var seasonId = $(this).val();
 	if ($(".episode-selector")) {
 		$(".episode-selector").remove();
@@ -33,7 +32,6 @@ $('.select-episodes').on('change', function() {
 $('.get-restaurants').click(function() {
 	/* Adds tiles with link to information and image of each restaurant in the selected episode.
 	Remove restaurants that have been populated already. */
-	console.log('bye');
 	var episodeId = $(this).attr('id');
 	if ($('.restaurant-card')) {
 		$('.restaurant-card').remove();
