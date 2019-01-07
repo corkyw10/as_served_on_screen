@@ -7,38 +7,50 @@
 {% block content %}
   {% if restaurant %}
         
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <img src="{{ asset('assets/images/'~restaurant.imageUrl) }}" class="img-fluid shadow" alt="Responsive image">
-					</div>
-	
-					<div class="col-md-6">
-						<h2 class="restaurant-title">{{ restaurant.name }}</h2>
-						<p>{{ restaurant.description }}</p>
-					</div>        
-        </div>    
-      </div>
+		<div class="container shadow">
+			<div class="row">
 
-			<div class="container">
-					<div class="row">
-						<div class="col-md-4">
-							<address>
-								{{ restaurant.name }}<br>
-								{{ restaurant.streetAddress }}<br>
-								{{ restaurant.city }}<br>
-								{{ restaurant.postCode }}<br><br>
-								<a class="btn btn-outline-dark" href="{{ restaurant.url }}" role="button" target="_blank">Visit their website</a>
-							</address>
-						</div>
-					</div>
+				<div class="col-md-12">
+					<h2 class="restaurant-title">{{ restaurant.name }}</h2>
+				</div>
+
+				<div class="col-md-8">						
+					<p>{{ restaurant.description }}</p>
+				</div>
+
+				<div class="col-md-4">
+					<img src="{{ asset('assets/images/'~restaurant.imageUrl) }}" class="img-fluid shadow info-image" alt="Responsive image">
+					<div class="location-info shadow">
+						<div id="mapid"></div>							 
+						<address>
+							<strong>{{ restaurant.name }}</strong><br>
+							{{ restaurant.streetAddress }}<br>
+							{{ restaurant.city }}<br>
+							{{ restaurant.postCode }}<br><br>
+							<a class="btn btn-outline-dark" href="{{ restaurant.url }}" role="button" target="_blank">Visit their website</a>
+						</address>						
+					</div>   
+				</div>
+
 			</div>
+		</div>
 
-{% else %}
+	{% else %}
 
-    <h2>There hasn't been any information added for this restaurant yet, we're working on it though, check again soon!</h2>
+  	<h2>There hasn't been any information added for this restaurant yet, we're working on it though, check again soon!</h2>
 
-{% endif %}
+	{% endif %}
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+	var mymap = L.map('mapid').setView([{{ restaurant.lat }}, {{ restaurant.lng }}], 13);
+	
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>', maxZoom: 18}).addTo(mymap);
+	var marker = L.marker([{{ restaurant.lat }}, {{ restaurant.lng }}]).addTo(mymap);
+</script>
+
 {% endblock %}
 
 
