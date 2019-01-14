@@ -1,0 +1,56 @@
+{% extends 'jumbo.html.twig' %}
+
+{% block stylesheets %}
+
+	{{ parent() }}
+
+	<!-- Custom styles for this template -->
+	<link href="{{ asset('assets/css/search.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container shadow">
+	<h1>Search results for: {{ searchTerm }}</h1>
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	{{ form_end(form) }}
+
+	{% if results %}
+
+	<ul class="results">
+
+		{% for result in results %}
+			{% if result.type == 'film' %}
+
+			<li class="result"><a href="{{ path(result.route, {'filmId': result.nativeId})}}">{{result.name}}</a></li>
+
+			{% elseif result.type == 'tvShow' %}
+
+			<li class="result"><a href="{{ path(result.route, {'tvShowId': result.nativeId})}}">{{result.name}}</a></li>
+
+			{% elseif result.type == 'tvShowRestaurant' %}
+
+			<li class="result"><a href="{{ path(result.route, {'tvShowId': result.nativeId, 'restaurantId': result.restaurantId})}}">{{result.name}}</a></li>
+
+			{% elseif result.type == 'filmRestaurant' %}
+
+			<li class="result"><a href="{{ path(result.route, {'filmId': result.nativeId, 'restaurantId': result.restaurantId})}}">{{result.name}}</a></li>
+
+			{% endif %}	
+
+		{% endfor %}
+
+	</ul>
+
+	{% else %}
+
+	<p>No results</p>
+
+	{% endif %}
+</div>
+
+
+
+{% endblock %}
