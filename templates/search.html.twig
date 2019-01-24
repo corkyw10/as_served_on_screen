@@ -12,7 +12,17 @@
 {% block content %}
 
 <div class="container shadow">
+
+	{% if results %}
+
 	<h1>Search results for: {{ searchTerm }}</h1>
+
+	{% else %}
+
+		<h1>Search</h1>
+
+	{% endif %}
+	
 	{{ form_start(form) }}
 	{{ form_widget(form) }}
 	{{ form_end(form) }}
@@ -44,9 +54,13 @@
 
 	</ul>
 
+	{% elseif searchTerm %}
+
+	<p>No results for {{ searchTerm }}. Please try something else. </p>
+
 	{% else %}
 
-	<p>No results</p>
+	<p>What do you fancy?</p>
 
 	{% endif %}
 </div>
