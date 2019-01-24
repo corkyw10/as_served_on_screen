@@ -1,52 +1,54 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}As Served On Screen - Home{% endblock %}
+	{% block title %}As Served On Screen - Home{% endblock %}
 
-    {% block stylesheets %}
+	{% block stylesheets %}
 
-        {{ parent() }}
+		{{ parent() }}
 
-        <!-- Custom styles for this template -->
-        <link href="{{ asset('assets/css/jumbo.css') }}" rel="stylesheet">
-    
-    {% endblock %}
+		<!-- Custom styles for this template -->
+		<link href="{{ asset('assets/css/jumbo.css') }}" rel="stylesheet">
+	
+	{% endblock %}
 
-    {% block body %}
+	{% block body %}
 
-    <body>
+	<body>
 
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <a class="navbar-brand" href="{{ path('home') }}">As Served On Screen</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+			<a class="navbar-brand" href="{{ path('home') }}">As Served On Screen</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('home') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('tvShows') }}">Tv Shows</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('films') }}">Films</a>
-            </li>
-            </ul>
-        </div>
-        </nav>
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav ml-auto">
+					<a class="nav-link" href="{{ path('home') }}">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('tvShows') }}">Tv Shows</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('films') }}">Films</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{ path('search') }}" class="nav-link">Search</a>
+				</li>
+				</ul>
+			</div>
+		</nav>
 
-        <main role="main">
+		<main role="main">
 
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div class="container">
-            {% block display %}<h1 class="display-3">As Served On Screen</h1>{% endblock %}
-            </div>
-        </div>
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<div class="container">
+			{% block display %}<h1 class="display-3">As Served On Screen</h1>{% endblock %}
+			</div>
+		</div>
 
-        {% block content %}{% endblock %}
+		{% block content %}{% endblock %}
 
-        </main>
+		</main>
 
 {% endblock %}
