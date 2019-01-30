@@ -35,7 +35,13 @@
             <p class="lead">
             <a href="{{ path('tvShows') }}" class="btn btn-lg btn-secondary">Tv Shows</a>
             <a href="{{ path('films') }}" class="btn btn-lg btn-secondary">Films</a>
+            {{ form_start(form) }}
+            {{ form_widget(form.search, {'attr': {'class': 'form-control-lg home-search', 'placeholder': 'Search Here'}}) }}
+            {{ form_row(form.Submit, {'attr': {'class': 'btn btn-lg btn-secondary'}}) }}	
+            {{ form_end(form) }}
             </p>
+
+
         </main>
 
 
