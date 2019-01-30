@@ -139,3 +139,26 @@ body {
 address {
   padding: 10px;
 }
+
+/* Search */
+
+form {
+  margin: 10px;
+}
+
+.search-results {
+  margin: 10px;
+}
+
+.result {
+  list-style-type: none;
+}
+
+.result a {
+  text-decoration: none;
+  color: #030208;
+}
+
+.result a:hover {
+  font-weight: bold;
+}
