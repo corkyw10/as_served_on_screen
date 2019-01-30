@@ -110,6 +110,7 @@ body {
 }
 
 .my-main {
+  overflow-x: auto;
   width: 100%; 
   display: -ms-flexbox;
   display: flex;
@@ -121,6 +122,11 @@ body {
   background-size: cover;
 }
 
+/* Search */
+
+.home-search {
+  margin-bottom: 10px;
+}
 
 /*
  * Footer
