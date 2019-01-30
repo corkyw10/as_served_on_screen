@@ -1,14 +1,5 @@
 {% extends 'jumbo.html.twig' %}
 
-{% block stylesheets %}
-
-	{{ parent() }}
-
-	<!-- Custom styles for this template -->
-	<link href="{{ asset('assets/css/search.css') }}" rel="stylesheet">
-
-{% endblock %}
-
 {% block content %}
 
 <div class="container shadow">
@@ -22,31 +13,38 @@
 		<h1>Search</h1>
 
 	{% endif %}
-	
-	{{ form_start(form) }}
-	{{ form_widget(form) }}
-	{{ form_end(form) }}
 
+	<form>
+		<div class="form-row">
+		{{ form_start(form) }}
+		<div class="form-group col-md-6">
+		{{ form_widget(form.search, {'attr': {'class': 'form-control', 'placeholder': 'Search Here'}}) }}	
+		</div>
+		{{ form_row(form.Submit, {'attr': {'class': 'btn btn-dark'}}) }}
+		{{ form_end(form) }}	
+		</div>	
+	</form>
+
+	<div class="search-results">
 	{% if results %}
-
-	<ul class="results">
+	<ul class="results .list-group-flush">
 
 		{% for result in results %}
 			{% if result.type == 'film' %}
 
-			<li class="result"><a href="{{ path(result.route, {'filmId': result.nativeId})}}">{{result.name}}</a></li>
+			<li class="result list-group-item"><a href="{{ path(result.route, {'filmId': result.nativeId})}}">{{result.name|title}}</a></li>
 
 			{% elseif result.type == 'tvShow' %}
 
-			<li class="result"><a href="{{ path(result.route, {'tvShowId': result.nativeId})}}">{{result.name}}</a></li>
+			<li class="result list-group-item"><a href="{{ path(result.route, {'tvShowId': result.nativeId})}}">{{result.name|title}}</a></li>
 
 			{% elseif result.type == 'tvShowRestaurant' %}
 
-			<li class="result"><a href="{{ path(result.route, {'tvShowId': result.nativeId, 'restaurantId': result.restaurantId})}}">{{result.name}}</a></li>
+			<li class="result list-group-item"><a href="{{ path(result.route, {'tvShowId': result.nativeId, 'restaurantId': result.restaurantId})}}">{{result.name|title}}</a></li>
 
 			{% elseif result.type == 'filmRestaurant' %}
 
-			<li class="result"><a href="{{ path(result.route, {'filmId': result.nativeId, 'restaurantId': result.restaurantId})}}">{{result.name}}</a></li>
+			<li class="result list-group-item"><a href="{{ path(result.route, {'filmId': result.nativeId, 'restaurantId': result.restaurantId})}}">{{result.name|title}}</a></li>
 
 			{% endif %}	
 
@@ -62,7 +60,10 @@
 
 	<p>What do you fancy?</p>
 
-	{% endif %}
+	{% endif %}	
+
+	</div>
+
 </div>
 
 
