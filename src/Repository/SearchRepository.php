@@ -28,7 +28,7 @@ class SearchRepository extends ServiceEntityRepository
             ->where('s.name LIKE :searchTerm')
             ->setParameter('searchTerm', '%'.addcslashes($searchTerm, '%_').'%')
             ->orderBy('s.name', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults(50)
             ->getQuery()
             ->getResult();
     }
