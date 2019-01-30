@@ -24,7 +24,7 @@ class SearchController extends AbstractController {
     $form = $this->createForm(SearchBoxType::class, null, array('csrf_protection' => false));
     
     if ($request->get('searchTerm')) {
-      // Handles redirected search request from home page
+      // Gets search term from redirected search request page and performs database search
       $searchTerm = $request->get('searchTerm');
       $results = $this->getDoctrine()->getRepository(Search::class)->getSearchResults($searchTerm);
 
@@ -33,7 +33,7 @@ class SearchController extends AbstractController {
       'searchTerm' => $searchTerm));
       
     } else {  
-      // Handles search directly from search page
+      // Performs database search for queries directly from search page
       $form->handleRequest($request);
 
       if ($form->isSubmitted() && $form->isValid()) {
@@ -48,7 +48,6 @@ class SearchController extends AbstractController {
     return $this->render('search.html.twig', array('results' => null, 
       'form' => $form->createView(),
       'searchTerm' => null));
-  }
+  } 
 }
-
 ?>
